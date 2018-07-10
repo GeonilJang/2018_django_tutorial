@@ -4,7 +4,7 @@ from . import views
 
 
 urlpatterns = [
-    #^시작$끝
+    #^시작 $끝
     url(r'^$', views.post_list, name='post_list'),
     # url(r'^(?P<id>\d+)/$',views.post_detail, name='post_detail'),
     #
