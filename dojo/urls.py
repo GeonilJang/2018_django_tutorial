@@ -1,7 +1,7 @@
 #blog/urls.py
 from django.conf.urls import url
 from . import views
-
+from . import views_cbv
 
 urlpatterns = [
     #^시작 $끝

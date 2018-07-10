@@ -13,3 +13,5 @@ def myfun(request, a,b):
     # })
     return HttpResponse(rs)
     # print("{} + {} = {}".format(a,b,a+b))
+
+#fbv cbv 로 나누어 진다.
