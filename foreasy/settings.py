@@ -13,7 +13,7 @@ SECRET_KEY = 'ct=wb&&42ntf7sohg%4e%kgo$(at+t5_l_ej&ol_kub07d8=vv'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog',
+    'dojo',
 ]
 
 MIDDLEWARE = [
@@ -38,6 +39,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+
+#최상의 url로 사용하겠다.
 ROOT_URLCONF = 'foreasy.urls'
 
 TEMPLATES = [
