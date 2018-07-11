@@ -56,7 +56,10 @@ ROOT_URLCONF = 'foreasy.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+        #여기에 추가 함으로 최상위 템플릿의 위치를 알려줄 수 있다.
+            os.path.join(BASE_DIR,'foreasy','templates')
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

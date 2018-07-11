@@ -119,11 +119,74 @@ comment = Comment.object.first()
 comment.post
 
 
+ManyToMnayField
 
 
 
 
 200 성공
 302 리다이렉트 return HttpResponseRedirect('/blog/') / resolve_url('blog:post_list') / redirect('blog:post_list')
-404 못찾음 raise Http404 / post = get)object_or_404(Post, id=100) 없는 id 접근시 발생
+404 못찾음 raise Http404 / post = get_object_or_404(Post, id=100) 없는 id 접근시 발생
 500 서버오류
+
+
+
+
+
+
+
+
+
+
+
+
+템플릿 만들기
+1) {% block content %}  이와 같은 방법으로 상속받는 자식 템플릿이 사용할 블락을 만든다.
+   {% endblock %}
+
+   {% extends "blog/layout.html" %} 이와 같은 방법으로 상속을 받습니다.
+
+
+
+템플릿 로더
+render(request, "blog/post_list.html")
+문자열=render_to_string('accounts/signup_welcome.txt', context_params) -> 저기서 context_params 는 사전형 제이슨
+
+
+_filesystem.loder
+프로젝트 전반적으로 쓰일 템플릿 파일은 "특정앱/template/" 경로가 아닌 별도의 경로의 저장이 필요
+settings.py에
+
+DIRS:[
+  os.path.join() 으로해서 추가 확인가능
+]__
+
+
+
+Urlreverse
+뷰에서 url을 거꾸로 찾아보자의 개념
+\\\\4가지 사용방법\\\\
+
+reverse('blog:post_detail', args=[10]) : 매칭 url이 없으면 NoReverseMatch 예외발생
+reverse('blog:post_detail', kwargs={'id':10})
+-/blog/10/
+
+resolve_url('blog:post_detail',10) : 매칭 url이 없으면 "인자 문자열"을 그대로 리턴 내뷰적으로 reverse 사용
+-/blog/10/
+
+
+redirect('blog:post_detail', 10) : 매칭 url이 없으면 "인자 문자열"을 url로 판단 내부적으로 resolve_url함수를 사용
+-> 뷰엣서 특정 url로 리다이렉트 시키고 싶을때 사용
+
+
+
+url template tag : 내주적으로 reverse 함수가 사용 {% url "blog:post_list" %}
+
+
+_model
+
+def get_absolute_url(self):
+  return reverse('blog:post_detail', args=[self.id])
+
+
+f
