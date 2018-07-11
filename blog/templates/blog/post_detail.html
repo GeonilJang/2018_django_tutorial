@@ -1,27 +1,34 @@
 {% extends "blog/layout.html" %}
 
+{%block title%}
+{{post.title}}
+{%endblock%}
 
 {% block content%}
 
 
-
-{%block title%}
-<h2>
-  {{post.title}}
-</h2>
-{%endblock%}
-
-    {{post.title}}
-    {{post.author}}
-    <hr>
-    <h3>댓글</h3>
-    {% for comment in post.comment_set.all %}
-      {{comment.message}}
-    {% endfor%}
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <h2>{{post.title}}</h2>
+      {{post.author}}
+      <hr>
+      <h3>댓글</h3>
+      {% for comment in post.comment_set.all %}
+        {{comment.message}}
+      {% endfor%}
 
 
-<hr>
-<a href="{% url "blog:post_list"%}">목록으로</a>
+  <hr>
+  <a href="{% url "blog:post_list"%}">목록으로</a>
+
+
+    </div>
+  </div>
+</div>
+
+
+
 
 
 

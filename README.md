@@ -187,6 +187,33 @@ _model
 
 def get_absolute_url(self):
   return reverse('blog:post_detail', args=[self.id])
+__
+
+
+
+
+
+장고
+mtv = mvc
+
+
+
+
+form
+
+get post enctype
+
+from urllib.parse import urlencode
+urlencode({'ke1':'value1'})
+
+
+
+
+
+
+
+
+
 
 
 f
