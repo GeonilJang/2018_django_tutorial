@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post
+from .models import Post, Comment,Tag
 # Register your models here.
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
@@ -37,3 +37,13 @@ action -> 한 번의 여러개 수행!!
 
 
 """
+
+@admin.register(Comment)
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ['id','message','author','update_at']
+    list_display_links =['message']
+
+@admin.register(Tag)
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ['id','name']
+    list_display_links =['name']

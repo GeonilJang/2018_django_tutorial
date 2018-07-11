@@ -35,7 +35,9 @@ class Post(models.Model):
     #                          ))
     title = models.CharField(max_length=100, verbose_name='제목', help_text="포스팅 제목을 입력해 주세요. 최대 100글자.")
     content = models.TextField(verbose_name='내용')
-    # tag_set = models.ManyToManyField('Tag', blank=True) #릴레이션을 할때는 테그 문자열로 넣어 준다
+
+    tag_set = models.ManyToManyField('Tag', blank=True) #릴레이션을 할때는 테그 문자열로 넣어 준다
+    
     lnglat = models.CharField(max_length=50, blank=True, help_text='경도/위도 포맷 으로', validators=[lnglat_validator])
     status = models.CharField(max_length=1, choices=STATUS_CHOICES, blank=True)
     create_at = models.DateTimeField(auto_now_add=True) #생성되는 그 순가의 값일 넣는다.
@@ -58,16 +60,16 @@ class Post(models.Model):
 
 #
 #
-# class Comment(models.Model):
-#     post = models.ForeignKey(Post)
-#     author = models.CharField(max_length=20)
-#     message = models.TextField()
-#     create_at = models.DateField(auto_now_add = True)
-#     update_at = models.DateField(auto_now=True)
+class Comment(models.Model):
+    post = models.ForeignKey(Post)
+    author = models.CharField(max_length=20)
+    message = models.TextField()
+    create_at = models.DateField(auto_now_add = True)
+    update_at = models.DateField(auto_now=True)
+
 #
-#
-# class Tag(models.Model):
-#     name = models.CharField(max_length=50, unique=True)
-#
-#     def __str__(self):
-#         return self.name #이름으로 보여주기
+class Tag(models.Model):
+    name = models.CharField(max_length=50, unique=True)
+
+    def __str__(self):
+        return self.name #이름으로 보여주기

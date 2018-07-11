@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    {{post.title}}
+    {{post.author}}
+    <hr>
+    <h3>댓글</h3>
+    {% for comment in post.comment_set.all %}
+      {{comment.message}}
+    {% endfor%}
+  </body>
+</html>
