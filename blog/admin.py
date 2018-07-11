@@ -3,7 +3,7 @@ from .models import Post, Comment,Tag
 # Register your models here.
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
-    list_display = ['id','author','title','create_at','status','content_size','update_at']
+    list_display = ['id','user','title','create_at','status','content_size','update_at']
     list_display_links = ['title']
     actions = ['make_published','make_widthraw','make_draft','myfun']
 

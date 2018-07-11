@@ -5,6 +5,7 @@ from django.forms import ValidationError
 
 from django.shortcuts import redirect
 from django.urls import reverse
+from django.conf import settings
 # Create your models here.
 """
 데이터 베이스 모델링 하기
@@ -25,7 +26,8 @@ class Post(models.Model):
         ('w','Withdrawn'),
     )
 
-    author =models.CharField(max_length=20)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL)
+    # author =models.CharField(max_length=20)
     # title = models.CharField(max_length=100, ---> 저장될값 , 화면에 보여질 값
     #                          choices=(
     #                             ('제목1','레이블1'),
@@ -37,7 +39,7 @@ class Post(models.Model):
     content = models.TextField(verbose_name='내용')
 
     tag_set = models.ManyToManyField('Tag', blank=True) #릴레이션을 할때는 테그 문자열로 넣어 준다
-    
+
     lnglat = models.CharField(max_length=50, blank=True, help_text='경도/위도 포맷 으로', validators=[lnglat_validator])
     status = models.CharField(max_length=1, choices=STATUS_CHOICES, blank=True)
     create_at = models.DateTimeField(auto_now_add=True) #생성되는 그 순가의 값일 넣는다.
